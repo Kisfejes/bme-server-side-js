@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Songbook - Join Session</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="join-session.css" />
+    <link rel="stylesheet" href="/common.css" />
+
+    <script src="/jquery/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Songbook</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="sessions.html">
+                Sessions
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <span>Musician Murphy</span>
+            <a href="/">
+              <img class="sign-out-icon" src="/assets/icons/sign-out.svg" height="24" width="24" />
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="session-header">
+        <h3>Practice for Christmas concert</h3>
+        <button class="btn btn-primary">Join</button>
+      </div>
+
+      <div class="block-title">Participants</div>
+      <ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+      </ul>
+
+      <div class="add-song-container">
+        <span>Song list</span>
+        <div style="display: flex">
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Available Songs
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Stone Sour - Wicked Game</a>
+                <a class="dropdown-item" href="#">Stone Sour - Song #3</a>
+              </div>
+            </div>
+          <a href="#">
+            <img src="/assets/icons/plus.svg" width="24" height="24"></img>
+          </a>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">Simon & Garfunkel - El Condor Pasa</li>
+        <li class="list-group-item">Simon & Garfunkel</li>
+        <li class="list-group-item">Simon & Garfunkel</li>
+      </ul>
+    </div>
+  </body>
+</html>

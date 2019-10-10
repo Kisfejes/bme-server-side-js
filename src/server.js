@@ -16,9 +16,17 @@ async function main() {
     const bootstrapPath = path.join(PROJECT_ROOT, 'node_modules', 'bootstrap', 'dist');
     app.use('/bootstrap', express.static(bootstrapPath));
 
+    // Serve jquery
+    const jqueryPath = path.join(PROJECT_ROOT, 'node_modules', 'jquery', 'dist');
+    app.use('/jquery', express.static(jqueryPath));
+
     // Serve static sites
     const staticSitesPath = path.join(PROJECT_ROOT, 'static-sites');
     app.use('/', express.static(staticSitesPath));
+
+    // Serve assets
+    const assetsPath = path.join(PROJECT_ROOT, 'assets');
+    app.use('/assets', express.static(assetsPath));
 
     const server = http.createServer(app);
     server.listen(port, () => {
