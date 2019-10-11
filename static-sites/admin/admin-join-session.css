@@ -1,0 +1,22 @@
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.block-title {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.add-song-container {
+  margin: 8px 0;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+}

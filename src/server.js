@@ -16,7 +16,7 @@ async function main() {
     const bootstrapPath = path.join(PROJECT_ROOT, 'node_modules', 'bootstrap', 'dist');
     app.use('/bootstrap', express.static(bootstrapPath));
 
-    // Serve jquery
+    // Serve jquery - Hello darkness, my old friend, I've come to talk with you again
     const jqueryPath = path.join(PROJECT_ROOT, 'node_modules', 'jquery', 'dist');
     app.use('/jquery', express.static(jqueryPath));
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Songbook - Add Song</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="add-song.css" />
+
+    <link rel="stylesheet" href="/common.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Songbook</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="admin-sessions.html">
+                Sessions
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="songs.html">
+                Songs
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <span>Admin Aragorn</span>
+            <a href="/">
+              <img class="sign-out-icon" src="/assets/icons/sign-out.svg" height="24" width="24" />
+            </a>
+          </div>
+        </div>
+      </nav>
+      <a href="songs.html">
+        <button class="btn btn-primary add-song">Add Song</button>
+      </a>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Song Name</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Artist</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Youtube link</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+    </div>
+  </body>
+</html>
