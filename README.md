@@ -1,2 +1,10 @@
 # bme-server-side-js
-Example application for University course with focus of server side javascript
+
+Example application for a course with focus of server side javascript
+
+# Run dev-server
+
+```bash
+npm install
+npm run start
+```
