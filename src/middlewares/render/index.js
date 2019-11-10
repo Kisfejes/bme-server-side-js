@@ -1,5 +1,5 @@
-const render = require('./render.mw');
+const renderMW = require('./render.mw');
 
 module.exports = {
-  render,
+  renderMW,
 };

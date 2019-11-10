@@ -7,17 +7,17 @@ const {
   songUpdate,
   songCreate,
 } = require('../middlewares/song/index');
-const { render } = require('../middlewares/render');
+const { renderMW } = require('../middlewares/render');
 
 const songRouter = new express.Router();
 
-songRouter.get('/songs', songList, render.bind(null, 'songs'));
+songRouter.get('/songs', songList, renderMW('songs'));
 
-songRouter.get('/songs/:song-id', songGet, render.bind(null, 'song'));
-songRouter.patch('/songs/:song-id', songUpdate, render.bind(null, 'song'));
+songRouter.patch('/songs/:song-id', songUpdate, renderMW('song'));
+songRouter.get('/songs/:song-id', songGet, renderMW('song'));
 songRouter.delete('/songs/:song-id', songDelete);
 
-songRouter.get('/song-create', songCreate, render.bind(null, 'song-create'));
-songRouter.post('/song-create', songCreate, render.bind(null, 'song-create'));
+songRouter.get('/song-create', songCreate, renderMW('song-create'));
+songRouter.post('/song-create', songCreate, renderMW('song-create'));
 
 module.exports = songRouter;

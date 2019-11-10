@@ -1,0 +1,85 @@
+<%- include('../helpers/html-header') -%>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Songbook</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="admin-sessions.html">
+            Sessions
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="songs.html">
+            Songs
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <span><%= currentUser.name %></span>
+        <a href="/">
+          <img class="sign-out-icon" src="/assets/icons/sign-out.svg" height="24" width="24" />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <a href="add-session.html">
+    <button class="btn btn-primary add-session">Add Session</button>
+  </a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Session Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Location</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Practice for Christmas concert</td>
+        <td>2019. 10. 17. (Friday) 18:00</td>
+        <td>Supercharge Office</td>
+        <td>
+          <a href="admin-join-session.html">
+            <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
+          </a>
+          <a href="#">
+            <img src="/assets/icons/x.svg" width="24" height="24" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Practice with Viki</td>
+        <td>2019. 10. 17. (Friday) 18:00</td>
+        <td>Ciprus</td>
+        <td>
+          <a href="admin-join-session.html">
+            <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
+          </a>
+          <a href="#">
+            <img src="/assets/icons/x.svg" width="24" height="24" />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%- include('../helpers/html-footer') -%>

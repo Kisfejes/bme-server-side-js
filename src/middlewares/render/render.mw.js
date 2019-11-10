@@ -1,6 +1,6 @@
 // Render the given page
-const render = (req, res, next, page) => {
-  res.send('render');
+const renderMW = viewName => (req, res) => {
+  res.render(viewName);
 };
 
-module.exports = render;
+module.exports = renderMW;

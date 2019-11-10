@@ -6,12 +6,10 @@ const authRouter = require('./auth.routes');
 //
 const { authCheck, roleCheck } = require('../middlewares/auth');
 
-const indexRouter = new express.Router();
+const rootRouter = new express.Router();
 
-indexRouter.use('*', authCheck, roleCheck);
+rootRouter.use(authRouter);
+rootRouter.use(songRouter, authCheck, roleCheck);
+rootRouter.use(sessionRouter, authCheck, roleCheck);
 
-indexRouter.use(songRouter);
-indexRouter.use(sessionRouter);
-indexRouter.use(authRouter);
-
-module.exports = indexRouter;
+module.exports = rootRouter;

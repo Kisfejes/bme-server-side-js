@@ -6,7 +6,9 @@ const portfinder = require('portfinder');
 const express = require('express');
 const session = require('express-session');
 
-const indexRouter = require('./routes/index.routes');
+const FileStore = require('session-file-store')(session);
+
+const rootRouter = require('./routes/root.routes');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 
@@ -15,11 +17,22 @@ async function main() {
     const port = await portfinder.getPortPromise({ port: 8080 });
 
     const app = express();
+
+    app.set('view engine', 'ejs');
+    app.set('views', path.join(PROJECT_ROOT, 'src', 'views'));
+
+    // session handling
+    const fileStoreOptions = {
+      path: path.join(PROJECT_ROOT, '.sessions'),
+    };
+
     app.use(
       session({
         secret: 'SUPER_SECRET',
         resave: false,
         saveUninitialized: false,
+        name: 'connect.songbook.sid',
+        store: new FileStore(fileStoreOptions),
       }),
     );
 
@@ -31,10 +44,13 @@ async function main() {
     const jqueryPath = path.join(PROJECT_ROOT, 'node_modules', 'jquery', 'dist');
     app.use('/jquery', express.static(jqueryPath));
 
+    // Serve styles
+    app.use(express.static(path.join(PROJECT_ROOT, 'src', 'style')));
+
     // // Serve static sites
     // const staticSitesPath = path.join(PROJECT_ROOT, 'static-sites');
     // app.use('/', express.static(staticSitesPath));
-    app.use(indexRouter);
+    app.use(rootRouter);
 
     // Serve assets
     const assetsPath = path.join(PROJECT_ROOT, 'assets');
