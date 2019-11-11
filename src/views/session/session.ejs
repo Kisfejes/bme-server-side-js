@@ -1,0 +1,54 @@
+<%- include('../helpers/html-header') -%> 
+<div class="container">
+  <%- include('../helpers/site-header') -%>
+  <div class="session-header">
+      <a href="/sessions">
+        <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
+      </a>
+      <h3><%= session.name %></h3>
+      <button class="btn btn-primary">Join</button>
+    </div>
+
+    <div class="block-title">Participants</div>
+    <ul class="list-group">
+        <% session.participants.forEach((participant, index) => { %>
+          <li class="list-group-item">
+              <span><%= participant.name %></span>
+              <a href="#">
+                  <img src="/assets/icons/x.svg" width="24" height="24" />
+              </a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <div class="add-song-container">
+      <span>Song list</span>
+      <div style="display: flex">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Available Songs
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% session.availableSongs.forEach((song, index) => { %>
+                <a class="dropdown-item" href="#"><%= `${song.artist} - ${song.title}` %></a>
+              <% }); %>
+              <a class="dropdown-item" href="#">Stone Sour - Song #3</a>
+            </div>
+          </div>
+        <a href="#">
+          <img src="/assets/icons/plus.svg" width="24" height="24"></img>
+        </a>
+      </div>
+    </div>
+    <ul class="list-group">
+        <% session.currentSongs.forEach((song, index) => { %>
+          <li class="list-group-item">
+              <span><%= `${song.artist} - ${song.title}` %></span>
+              <a href="#">
+                  <img src="/assets/icons/x.svg" width="24" height="24" />
+              </a>
+          </li>
+        <% }); %>
+    </ul>
+</div>
+<%- include('../helpers/html-footer') -%>

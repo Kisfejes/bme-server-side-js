@@ -7,6 +7,6 @@ const authRouter = new express.Router();
 
 authRouter.get('/login', renderMW('login'));
 authRouter.get('/login-with-google', loginWithGoogle);
-authRouter.get('/logut', logout);
+authRouter.get('/logout', logout);
 
 module.exports = authRouter;

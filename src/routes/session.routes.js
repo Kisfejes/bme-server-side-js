@@ -13,9 +13,9 @@ const sessionRouter = new express.Router();
 
 sessionRouter.get('/sessions', sessionList, renderMW('session/sessions'));
 
-sessionRouter.get('/sessions/:session-id', sessionGet, renderMW('session'));
-sessionRouter.patch('/sessions/:session-id', sessionUpdate, renderMW('session'));
-sessionRouter.delete('/sessions/:session-id', sessionDelete);
+sessionRouter.get('/sessions/:sessionid', sessionGet, renderMW('session/session'));
+sessionRouter.patch('/sessions/:sessionid', sessionUpdate, renderMW('session/session'));
+sessionRouter.delete('/sessions/:sessionid', sessionDelete);
 
 sessionRouter.get('/session-create', sessionCreate, renderMW('session-create'));
 sessionRouter.post('/session-create', sessionCreate, renderMW('session-create'));

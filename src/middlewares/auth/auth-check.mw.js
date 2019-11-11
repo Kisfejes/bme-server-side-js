@@ -3,6 +3,7 @@
 // ELSE next()
 const { AuthService } = require('../../services');
 
+// eslint-disable-next-line consistent-return
 const authCheck = (req, res, next) => {
   const currentUser = AuthService.getCurrentUser(req.session);
 
@@ -11,6 +12,7 @@ const authCheck = (req, res, next) => {
   }
 
   res.locals.currentUser = currentUser;
+  res.locals.currentPath = req.url;
 
   // redirect to default page if '/' given
   if (req.originalUrl === '/') {

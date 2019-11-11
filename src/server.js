@@ -5,7 +5,7 @@ const path = require('path');
 const portfinder = require('portfinder');
 const express = require('express');
 const session = require('express-session');
-
+const morgan = require('morgan');
 const FileStore = require('session-file-store')(session);
 
 const rootRouter = require('./routes/root.routes');
@@ -17,6 +17,7 @@ async function main() {
     const port = await portfinder.getPortPromise({ port: 8080 });
 
     const app = express();
+    app.use(morgan('dev'));
 
     app.set('view engine', 'ejs');
     app.set('views', path.join(PROJECT_ROOT, 'src', 'views'));

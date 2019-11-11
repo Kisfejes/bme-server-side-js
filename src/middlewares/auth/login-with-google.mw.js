@@ -6,11 +6,13 @@ const loginWithGoogle = (req, res) => {
   let user;
   if (role === 'admin') {
     user = {
+      userid: 1,
       name: 'Admin Aladar',
       role: 'admin',
     };
   } else {
     user = {
+      userid: 2,
       name: 'Musician Miki',
       role: 'musician',
     };

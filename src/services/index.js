@@ -1,3 +1,4 @@
 const AuthService = require('./auth.service');
+const SessionService = require('./session.service');
 
-module.exports = { AuthService };
+module.exports = { AuthService, SessionService };

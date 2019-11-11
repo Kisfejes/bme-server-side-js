@@ -2,7 +2,7 @@ body {
   height: 100vh;
 }
 
-.container {
+.login-container {
   height: 100%;
   display: flex;
   align-items: center;
@@ -13,4 +13,32 @@ body {
 .login-btn {
   margin: 12px 0px;
   width: 240px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-out-icon {
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.block-title {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.add-song-container {
+  margin: 8px 0;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
 }
