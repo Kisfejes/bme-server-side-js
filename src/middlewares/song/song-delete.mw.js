@@ -1,6 +1,5 @@
 // Check request body, and delete song
-const songDelete = (req, res, next) => {
-  next();
+const songDelete = (req, res) => {
   res.redirect('/songs');
 };
 

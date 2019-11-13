@@ -1,4 +1,5 @@
-const sessions = [
+// eslint-disable-next-line prefer-const
+let sessions = [
   {
     id: 1,
     name: 'Practice for Christmas concert',
@@ -66,6 +67,16 @@ class SessionService {
     }
 
     return currentSession;
+  }
+
+  static deleteSession(sessionid) {
+    const currentSessionIndex = sessions.findIndex(session => session.id === sessionid);
+
+    if (currentSessionIndex === -1) {
+      throw new Error(`Session not found with id: "${sessionid}"`);
+    }
+
+    sessions.splice(currentSessionIndex, 1);
   }
 }
 

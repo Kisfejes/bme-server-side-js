@@ -1,6 +1,47 @@
 <%- include('../helpers/html-header') -%> 
 <div class="container">
   <%- include('../helpers/site-header') -%>
-  add-session
+  <form method="post" action="session-create">
+    <div class="content-header">
+        <a href="/sessions">
+          <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
+        </a>
+      <h3>Add Session</h3>
+      <a href="admin-sessions.html">
+        <button class="btn btn-primary add-session">Add Session</button>
+      </a>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Session Name</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="session-name"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Session Date</span>
+      </div>
+      <input
+        type="date"
+        class="form-control"
+        name="session-date"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Session Location</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="session-location"
+      />
+    </div>
+  </form>
 </div>
 <%- include('../helpers/html-footer') -%>

@@ -57,3 +57,8 @@ li.list-group-item {
 form .input-group-text {
   min-width: 150px;
 }
+
+table td:last-child {
+  display: flex;
+  justify-content: flex-end;
+}

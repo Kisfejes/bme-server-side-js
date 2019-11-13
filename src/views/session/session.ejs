@@ -2,12 +2,12 @@
 <div class="container">
   <%- include('../helpers/site-header') -%>
   <div class="content-header">
-      <a href="/sessions">
-        <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
-      </a>
-      <h3><%= session.name %></h3>
-      <button class="btn btn-primary">Join</button>
-    </div>
+    <a href="/sessions">
+      <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
+    </a>
+    <h3><%= session.name %></h3>
+    <button class="btn btn-primary">Join</button>
+  </div>
 
     <div class="block-title">Participants</div>
     <ul class="list-group">
@@ -32,7 +32,6 @@
               <% session.availableSongs.forEach((song, index) => { %>
                 <a class="dropdown-item" href="#"><%= `${song.artist} - ${song.title}` %></a>
               <% }); %>
-              <a class="dropdown-item" href="#">Stone Sour - Song #3</a>
             </div>
           </div>
       </div>
