@@ -12,13 +12,7 @@ const authCheck = (req, res, next) => {
   }
 
   res.locals.currentUser = currentUser;
-  res.locals.currentPath = req.url;
-
-  // redirect to default page if '/' given
-  if (req.originalUrl === '/') {
-    return res.redirect('/sessions');
-  }
-
+  res.locals.currentPath = req.originalUrl;
   next();
 };
 

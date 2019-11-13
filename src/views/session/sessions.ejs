@@ -1,9 +1,12 @@
 <%- include('../helpers/html-header') -%> 
 <div class="container">
   <%- include('../helpers/site-header') -%>
-  <a href="#">
-    <button class="btn btn-primary add-session">Add Session</button>
-  </a>
+  <div class="content-header">
+    <h3>Available sessions</h3>
+    <a href="/session-create">
+      <button class="btn btn-primary add-session">Add Session</button>
+    </a>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -25,7 +28,7 @@
               <a href="/sessions/<%= session.id %>">
                 <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
               </a>
-              <a href="#">
+              <a href="/session-delete/<%= session.id %>">
                 <img src="/assets/icons/x.svg" width="24" height="24" />
               </a>
             </td>

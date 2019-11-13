@@ -1,0 +1,40 @@
+<%- include('../helpers/html-header') -%> 
+<div class="container">
+  <%- include('../helpers/site-header') -%>
+  <div class="content-header">
+      <h3>Available songs</h3>
+      <a href="add-song.html">
+          <button class="btn btn-primary add-song">Add Song</button>
+        </a>
+    </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Song Name</th>
+        <th scope="col">Artist</th>
+        <th scope="col">Youtube link</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        <% songs.forEach((song, index) => { %>
+          <tr>
+            <th scope="row"><%= index + 1%></th> 
+            <td><%= song.title%></td>
+            <td><%= song.artist%></td>
+            <td><%= song.youtubeLink%></td>
+            <td>
+              <a class="icon" href="/songs/<%= song.id %>">
+                <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
+              </a>
+              <a class="icon" href="/song-delete/<%= song.id %>">
+                <img src="/assets/icons/x.svg" width="24" height="24" />
+              </a>
+            </td>
+          </tr>
+        <% }); %>
+    </tbody>
+  </table>
+</div>
+<%- include('../helpers/html-footer') -%>

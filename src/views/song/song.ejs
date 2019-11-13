@@ -1,0 +1,49 @@
+<%- include('../helpers/html-header') -%> 
+<div class="container">
+  <%- include('../helpers/site-header') -%>
+  <form method="post" action="">
+    <div class="content-header">
+      <a href="/songs">
+        <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
+      </a>
+      <h3><%= `${song.artist} - ${song.title}`%></h3>
+      <button class="btn btn-primary edit-song" type="submit">Edit Song</button>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Song Name</span>
+      </div>
+      <input
+        name="song-title"
+        type="text"
+        class="form-control"
+        value="<%= song.title%>"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Artist</span>
+      </div>
+      <input
+        name="song-artist"
+        type="text"
+        class="form-control"
+        value="<%= song.artist %>"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Youtube link</span>
+      </div>
+      <input
+        name="ytb-link"
+        type="text"
+        class="form-control"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        value="<%= song.youtubeLink %>"
+      />
+    </div>
+  </form>
+</div>
+<%- include('../helpers/html-footer') -%>
