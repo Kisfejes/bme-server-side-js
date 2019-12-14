@@ -1,37 +1,53 @@
-const songs = [
-  {
-    id: 1,
-    title: 'The Boxer',
-    artist: 'Simon & Garfunkel',
-    youtubeLink: 'https://www.youtube.com/watch?v=l3LFML_pxlY',
-  },
-  {
-    id: 2,
-    title: 'Mrs Robinson',
-    artist: 'Simon & Garfunkel',
-    youtubeLink: 'https://www.youtube.com/watch?v=9C1BCAgu2I8',
-  },
-  {
-    id: 3,
-    title: 'Feed Me',
-    artist: 'Blue Tips',
-    youtubeLink: 'https://www.youtube.com/watch?v=eG4pDOD9Plk',
-  },
-];
+const SongModel = require('../models/song.model');
 
 class SongService {
-  static getSongs() {
-    return songs;
+  static async getSongs() {
+    try {
+      const songs = await SongModel.find();
+      return songs;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
-  static getSong(songid) {
-    const currentSong = songs.find(song => song.id === songid);
+  static async getSong(songid) {
+    try {
+      const song = await SongModel.findById(songid);
+      if (!song) {
+        throw new Error(`Song not found with id: "${songid}"`);
+      }
+      return song;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 
-    if (!currentSong) {
+  static async createSong({ title, artist, youtube }) {
+    await SongModel.create({
+      title,
+      artist,
+      youtubeLink: youtube,
+    });
+  }
+
+  static async updateSong({ songid, title, artist, youtube }) {
+    const song = await SongModel.findById(songid);
+    if (!song) {
       throw new Error(`Song not found with id: "${songid}"`);
     }
 
-    return currentSong;
+    song.title = title;
+    song.artist = artist;
+    song.youtubeLink = youtube;
+    await song.save();
+  }
+
+  static async deleteSong(songid) {
+    await SongModel.remove({
+      _id: songid,
+    });
   }
 }
 

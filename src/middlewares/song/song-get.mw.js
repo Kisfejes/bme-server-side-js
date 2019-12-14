@@ -1,11 +1,11 @@
 const { SongService } = require('../../services');
 
 // Get song based on song-id
-const songGet = (req, res, next) => {
-  const songid = parseInt(req.params.songid, 10);
+const songGet = async (req, res, next) => {
+  const { songid } = req.params;
 
-  const currentSong = SongService.getSong(songid);
-  res.locals.song = currentSong;
+  const song = await SongService.getSong(songid);
+  res.locals.song = song;
   next();
 };
 

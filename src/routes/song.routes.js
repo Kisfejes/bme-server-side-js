@@ -22,7 +22,7 @@ songRouter.use('/song-delete', authCheck, roleCheck);
 songRouter.get('/song-delete/:songid', songDelete);
 
 songRouter.use('/song-create', authCheck, roleCheck);
-songRouter.get('/song-create', songCreate, renderMW('song/song-create'));
+songRouter.get('/song-create', renderMW('song/song-create'));
 songRouter.post('/song-create', songCreate, renderMW('song/song-create'));
 
 module.exports = songRouter;

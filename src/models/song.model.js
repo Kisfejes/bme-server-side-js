@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const SongModel = mongoose.model('Song', {
-  name: String,
+  title: String,
   artist: String,
   youtubeLink: String,
 });

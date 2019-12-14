@@ -7,14 +7,16 @@
         <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
       </a>
       <h3>Add Song</h3>
-      <button class="btn btn-primary edit-song" type="submit">Add Song</button>
+      <a>
+        <button class="btn btn-primary edit-song" type="submit">Add Song</button>
+      </a>
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">Song Name</span>
       </div>
       <input
-        name="song-title"
+        name="title"
         type="text"
         class="form-control"
       />
@@ -24,7 +26,7 @@
         <span class="input-group-text">Artist</span>
       </div>
       <input
-        name="song-artist"
+        name="artist"
         type="text"
         class="form-control"
       />
@@ -34,11 +36,12 @@
         <span class="input-group-text">Youtube link</span>
       </div>
       <input
-        name="ytb-link"
+        name="youtube"
         type="text"
         class="form-control"
       />
     </div>
   </form>
+  <%- include('../helpers/error-handling') -%>  
 </div>
 <%- include('../helpers/html-footer') -%>

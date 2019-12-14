@@ -25,10 +25,10 @@
             <td><%= song.artist%></td>
             <td><%= song.youtubeLink%></td>
             <td>
-              <a class="icon" href="/songs/<%= song.id %>">
+              <a class="icon" href="/songs/<%= song._id %>">
                 <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
               </a>
-              <a class="icon" href="/song-delete/<%= song.id %>">
+              <a class="icon" href="/song-delete/<%= song._id %>">
                 <img src="/assets/icons/x.svg" width="24" height="24" />
               </a>
             </td>
