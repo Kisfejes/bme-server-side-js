@@ -7,7 +7,7 @@
           <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
         </a>
       <h3>Add Session</h3>
-      <a href="admin-sessions.html">
+      <a>
         <button class="btn btn-primary add-session">Add Session</button>
       </a>
     </div>
@@ -19,17 +19,23 @@
       <input
         type="text"
         class="form-control"
-        name="session-name"
-      />
+        name="name"
+        <% if (typeof session !== 'undefined' && session.name) { %>
+          value=<%= session.name %>
+        <% } %>
+      />     
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">Session Date</span>
       </div>
       <input
-        type="date"
+        type="datetime-local"
         class="form-control"
-        name="session-date"
+        name="date"
+        <% if (typeof session !== 'undefined' && session.date) { %>
+          value=<%= session.date %>
+        <% } %>
       />
     </div>
     <div class="input-group mb-3">
@@ -39,9 +45,17 @@
       <input
         type="text"
         class="form-control"
-        name="session-location"
+        name="location"
+        <% if (typeof session !== 'undefined' && session.location) { %>
+          value=<%= session.location %>
+        <% } %>
       />
     </div>
   </form>
+  <% if (typeof error !== 'undefined') { %>
+    <div class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% } %>
 </div>
 <%- include('../helpers/html-footer') -%>

@@ -22,7 +22,7 @@ sessionRouter.use('/sessions', authCheck, roleCheck);
 sessionRouter.get('/session-delete/:sessionid', sessionDelete);
 
 sessionRouter.use('/session-create', authCheck, roleCheck);
-sessionRouter.get('/session-create', sessionCreate, renderMW('session/session-create'));
+sessionRouter.get('/session-create', renderMW('session/session-create'));
 sessionRouter.post('/session-create', sessionCreate, renderMW('session/session-create'));
 
 module.exports = sessionRouter;

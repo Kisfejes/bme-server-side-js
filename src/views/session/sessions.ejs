@@ -22,13 +22,13 @@
         <tr>
           <th scope="row"><%= index + 1%></th> 
           <td><%= session.name%></td>
-          <td><%= moment.unix(session.date).format('YYYY-MMMM-DD HH:mm')%></td>
+          <td><%= moment(session.date).format('YYYY-MMMM-DD HH:mm')%></td>
           <td><%= session.location%></td>
         <td>
-              <a href="/sessions/<%= session.id %>">
+              <a href="/sessions/<%= session._id %>">
                 <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
               </a>
-              <a href="/session-delete/<%= session.id %>">
+              <a href="/session-delete/<%= session._id %>">
                 <img src="/assets/icons/x.svg" width="24" height="24" />
               </a>
             </td>

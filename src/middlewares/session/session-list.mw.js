@@ -1,8 +1,10 @@
 const { SessionService } = require('../../services');
 
 // List sessions
-const sessionList = (req, res, next) => {
-  const sessions = SessionService.getSessions();
+const sessionList = async (req, res, next) => {
+  const sessions = await SessionService.getSessions();
+
+  console.log(sessions);
 
   res.locals.sessions = sessions;
   next();

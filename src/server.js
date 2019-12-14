@@ -7,17 +7,24 @@ const express = require('express');
 const session = require('express-session');
 const morgan = require('morgan');
 const FileStore = require('session-file-store')(session);
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const rootRouter = require('./routes/root.routes');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
+const MONGODB_NAMESPACE = 'bme-server-js-bookmaker';
 
 async function main() {
   try {
+    // connect to the database
+    mongoose.connect(`mongodb://localhost:27017/${MONGODB_NAMESPACE}`);
+
     const port = await portfinder.getPortPromise({ port: 8080 });
 
     const app = express();
     app.use(morgan('dev'));
+    app.use(bodyParser());
 
     app.set('view engine', 'ejs');
     app.set('views', path.join(PROJECT_ROOT, 'src', 'views'));
