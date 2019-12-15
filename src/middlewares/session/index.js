@@ -5,6 +5,8 @@ const sessionList = require('./session-list.mw');
 const sessionUpdate = require('./session-update.mw');
 const sessionAddSong = require('./session-add-song.mw');
 const sessionRemoveSong = require('./session-remove-song.mw');
+const sessionAddParticipant = require('./session-add-participant.mw.js');
+const sessionRemoveParticipant = require('./session-remove-participant.mw');
 
 module.exports = {
   sessionCreate,
@@ -14,4 +16,6 @@ module.exports = {
   sessionUpdate,
   sessionAddSong,
   sessionRemoveSong,
+  sessionAddParticipant,
+  sessionRemoveParticipant,
 };

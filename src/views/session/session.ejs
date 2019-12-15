@@ -6,7 +6,9 @@
       <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
     </a>
     <h3><%= session.name %></h3>
-    <button class="btn btn-primary">Join</button>
+    <a href=<%=`/session-add-participant?sessionid=${session._id}&userid=${user._id}`%>>
+      <button class="btn btn-primary">Join</button>
+    </a>
   </div>
 
     <div class="block-title">Participants</div>
@@ -14,7 +16,7 @@
         <% session.participants.forEach((participant, index) => { %>
           <li class="list-group-item">
               <span><%= participant.name %></span>
-              <a href="#">
+              <a href=<%=`/session-remove-participant?sessionid=${session._id}&userid=${user._id}`%>>
                   <img src="/assets/icons/x.svg" width="24" height="24" />
               </a>
             </li>

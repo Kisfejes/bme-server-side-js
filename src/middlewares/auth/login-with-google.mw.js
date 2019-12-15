@@ -1,26 +1,36 @@
-const { AuthService } = require('../../services');
+const { AuthService, UserService } = require('../../services');
+
+const { ROLES } = require('../../utils/const');
 
 // Redirects to google, and handle response
-const loginWithGoogle = (req, res) => {
+const loginWithGoogle = async (req, res) => {
   const { role } = req.query;
   let user;
   if (role === 'admin') {
     user = {
-      userid: 1,
       name: 'Admin Aladar',
-      role: 'admin',
+      email: 'admin.aladar@example.com',
+      role: ROLES.ADMIN,
     };
   } else {
     user = {
-      userid: 2,
       name: 'Musician Miki',
-      role: 'musician',
+      email: 'musician.miki@example.com',
+      role: ROLES.MUSICIAN,
     };
   }
 
-  // give session then redirect
-  AuthService.setCurrentUser(req.session, user);
+  // check if the user already exists
+  const checkUserWithEmail = await UserService.getUserByEmail(user.email);
 
+  if (checkUserWithEmail) {
+    // give session then redirect
+    AuthService.setCurrentUser(req.session, checkUserWithEmail);
+    return res.redirect('/sessions');
+  }
+
+  const createdUser = await UserService.createUser(user);
+  AuthService.setCurrentUser(req.session, createdUser);
   res.redirect('/sessions');
 };
 

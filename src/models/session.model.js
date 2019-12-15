@@ -5,7 +5,7 @@ const SessionModel = mongoose.model('Session', {
   date: Date,
   location: String,
   songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }],
-  participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Session' }],
+  participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
 module.exports = SessionModel;

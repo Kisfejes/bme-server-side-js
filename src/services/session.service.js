@@ -1,5 +1,6 @@
 const SessionModel = require('../models/session.model');
 const SongService = require('./song.service');
+const UserService = require('./user.service');
 
 class SessionService {
   static async getSessions() {
@@ -14,7 +15,9 @@ class SessionService {
 
   static async getSession(sessionid) {
     try {
-      const session = await SessionModel.findById(sessionid).populate('songs');
+      const session = await SessionModel.findById(sessionid)
+        .populate('songs')
+        .populate('participants');
       if (!session) {
         throw new Error(`Session not found with id: "${sessionid}"`);
       }
@@ -45,7 +48,6 @@ class SessionService {
       const session = await SessionService.getSession(sessionid);
       const song = await SongService.getSong(songid);
 
-      console.log(session.songs);
       session.songs.push(song);
       await session.save();
     } catch (error) {
@@ -72,12 +74,35 @@ class SessionService {
     }
   }
 
-  static async addParticipants(userid) {
-    //
+  static async addParticipant(sessionid, userid) {
+    try {
+      const session = await SessionService.getSession(sessionid);
+      const user = await UserService.getUser(userid);
+
+      session.participants.push(user);
+      await session.save();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  static async removeParticipants(userid) {
-    //
+  static async removeParticipant(sessionid, userid) {
+    try {
+      const session = await SessionService.getSession(sessionid);
+
+      const userToRemoveIndex = session.participants.findIndex(user => {
+        // eslint-disable-next-line no-underscore-dangle
+        return user._id.toString() === userid;
+      });
+      if (userToRemoveIndex === -1) {
+        throw new Error(`No user ${userid} in session ${sessionid}`);
+      }
+
+      session.participants.splice(userToRemoveIndex, 1);
+      await session.save();
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

@@ -8,6 +8,8 @@ const {
   sessionCreate,
   sessionAddSong,
   sessionRemoveSong,
+  sessionAddParticipant,
+  sessionRemoveParticipant,
 } = require('../middlewares/session/index');
 const { renderMW } = require('../middlewares/render');
 //
@@ -32,5 +34,11 @@ sessionRouter.get('/session-add-song', sessionAddSong);
 
 sessionRouter.use('/session-remove-song', authCheck, roleCheck);
 sessionRouter.get('/session-remove-song', sessionRemoveSong);
+
+sessionRouter.use('/session-add-participant', authCheck, roleCheck);
+sessionRouter.use('/session-add-participant', sessionAddParticipant);
+
+sessionRouter.use('/session-remove-participant', authCheck, roleCheck);
+sessionRouter.use('/session-remove-participant', sessionRemoveParticipant);
 
 module.exports = sessionRouter;

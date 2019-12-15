@@ -5,6 +5,7 @@ const sessionGet = async (req, res, next) => {
   const { sessionid } = req.params;
 
   const session = await SessionService.getSession(sessionid);
+
   const availableSongs = (await SongService.getSongs()).filter(
     song =>
       // eslint-disable-next-line no-underscore-dangle
@@ -13,6 +14,8 @@ const sessionGet = async (req, res, next) => {
 
   res.locals.session = session;
   res.locals.availableSongs = availableSongs;
+  res.locals.user = req.session.user;
+
   next();
 };
 
