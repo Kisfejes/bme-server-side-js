@@ -6,9 +6,20 @@
       <img src="/assets/icons/arrow-left.svg" width="24" height="24" />
     </a>
     <h3><%= session.name %></h3>
-    <a href=<%=`/session-add-participant?sessionid=${session._id}&userid=${user._id}`%>>
-      <button class="btn btn-primary">Join</button>
-    </a>
+    <!-- Render join button if user is not in the session -->
+    <%if (!userInSession) { %>
+      <a href=<%=`/session-add-participant?sessionid=${session._id}&userid=${user._id}`%>>
+        <button class="btn btn-primary">Join</button>
+      </a>
+    <% } %>
+
+    <!-- Render leave button if user is in the session -->
+    <%if (userInSession) { %>
+      <a href=<%=`/session-remove-participant?sessionid=${session._id}&userid=${user._id}`%>>
+        <button class="btn btn-primary">Leave</button>
+      </a>
+    <% } %>
+
   </div>
 
     <div class="block-title">Participants</div>
