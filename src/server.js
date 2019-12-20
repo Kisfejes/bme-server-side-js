@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const rootRouter = require('./routes/root.routes');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
-const MONGODB_NAMESPACE = 'bme-server-js-bookmaker';
+const MONGODB_NAMESPACE = 'bme-server-js-songbook';
 
 async function main() {
   try {

@@ -3,9 +3,11 @@
   <%- include('../helpers/site-header') -%>
   <div class="content-header">
     <h3>Available sessions</h3>
-    <a href="/session-create">
-      <button class="btn btn-primary add-session">Add Session</button>
-    </a>
+    <%if (currentUser.role === 'ADMIN') { %>
+      <a href="/session-create">
+        <button class="btn btn-primary add-session">Add Session</button>
+      </a>
+    <% } %>
   </div>
   <table class="table table-hover">
     <thead>
@@ -28,9 +30,11 @@
               <a href="/sessions/<%= session._id %>">
                 <img src="/assets/icons/arrow-right.svg" width="24" height="24" />
               </a>
-              <a href="/session-delete/<%= session._id %>">
-                <img src="/assets/icons/x.svg" width="24" height="24" />
-              </a>
+              <%if (currentUser.role === 'ADMIN') { %>
+                <a href="/session-delete/<%= session._id %>">
+                  <img src="/assets/icons/x.svg" width="24" height="24" />
+                </a>
+              <% } %>
             </td>
         </tr>
       <% }); %>
