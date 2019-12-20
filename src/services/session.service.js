@@ -2,10 +2,19 @@ const SessionModel = require('../models/session.model');
 const SongService = require('./song.service');
 const UserService = require('./user.service');
 
+const mockedSessions = require('./mock-data/sessions.mock');
+
 class SessionService {
   static async getSessions() {
     try {
-      const sessions = await SessionModel.find();
+      let sessions;
+
+      if (process.env.UNDER_TEST) {
+        sessions = mockedSessions;
+      } else {
+        sessions = await SessionModel.find();
+      }
+
       return sessions;
     } catch (error) {
       console.error(error);
@@ -15,9 +24,16 @@ class SessionService {
 
   static async getSession(sessionid) {
     try {
-      const session = await SessionModel.findById(sessionid)
-        .populate('songs')
-        .populate('participants');
+      let session;
+
+      if (process.env.UNDER_TEST) {
+        session = mockedSessions.find(mockedSession => mockedSession.id === sessionid);
+      } else {
+        session = await SessionModel.findById(sessionid)
+          .populate('songs')
+          .populate('participants');
+      }
+
       if (!session) {
         throw new Error(`Session not found with id: "${sessionid}"`);
       }
@@ -68,7 +84,10 @@ class SessionService {
       }
 
       session.songs.splice(songToRemoveIndex, 1);
-      await session.save();
+
+      if (!process.env.UNDER_TEST) {
+        await session.save();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -95,11 +114,14 @@ class SessionService {
         return user._id.toString() === userid;
       });
       if (userToRemoveIndex === -1) {
-        throw new Error(`No user ${userid} in session ${sessionid}`);
+        throw new Error(`No user "${userid}" in session "${sessionid}"`);
       }
 
       session.participants.splice(userToRemoveIndex, 1);
-      await session.save();
+
+      if (!process.env.UNDER_TEST) {
+        await session.save();
+      }
     } catch (error) {
       console.log(error);
     }
